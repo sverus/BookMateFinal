@@ -31,6 +31,7 @@ export default function App() {
   value={value}
 />
 <Text>Repeated</Text>
+<div id="content"></div>
 
       <Button
         onPress={() => {
@@ -40,6 +41,20 @@ export default function App() {
           //replace spaces with + for API call
           url = url.replace(/ /g, "+");
           console.log(url);
+          console.log("The next thing logged will be JSON data from fetch");
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              //loop through search results and display them
+                      for (var i = 0; i < data.items.length; i++) {
+                        var item = data.items[i];
+                        document.getElementById("content").innerHTML += "<div class="+"book-container>"+"<h3>"+ item.volumeInfo.title+
+                        "</h3> <p>Author: "+ item.volumeInfo.authors+ "</p>"+
+                         "<p><img src="+ item.volumeInfo.imageLinks.thumbnail + "></p>"+
+                        "</p> <p>Category: "+ item.volumeInfo.categories+ "</p>"
+                        +"</div>"
+            }
+    });
 
 
         }}
