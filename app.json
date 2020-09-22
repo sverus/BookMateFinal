@@ -1,0 +1,12 @@
+{
+  "name": "BookMate",
+  "displayName": "BookMate",
+  "expo": {
+    "name": "BookMate",
+    "slug": "BookMate",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
