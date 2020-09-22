@@ -10,21 +10,38 @@ import {
 
 
 
+
 export default function App() {
 
+  var baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
+
+  var key = "&key=AIzaSyD4GijWnTEom_CThw6R6deoZiI7h6n3UWM";
+  //building API URL
+
+
     const [value, onChangeText] = React.useState('Enter a book or author');
+    const userInput = onChangeText;
   return (
     <View style={styles.container}>
       <Text>BookMate</Text>
       <Text>Search for a book</Text>
       <TextInput
-  style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+  style={styles.input}
   onChangeText={text => onChangeText(text)}
   value={value}
 />
+<Text>Repeated</Text>
+
       <Button
         onPress={() => {
-          Alert.alert('You tapped the button!');
+          console.log('IT was clicked');
+          console.log(value);
+          var url = baseUrl + value + key;
+          //replace spaces with + for API call
+          url = url.replace(/ /g, "+");
+          console.log(url);
+
+
         }}
         title="Press Me"
       />
@@ -41,4 +58,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input: {
+    backgroundColor: '#AAA',
+    height: 80,
+  }
 });
